@@ -1,4 +1,5 @@
 const BankAccount = require(`../src/BankAccount`);
+const Transaction = require(`../src/Transaction`);
 
 describe("Test suite for despositing and withdrawing money", () => {
 	let expectedOutput, actualOutput;
@@ -54,7 +55,7 @@ describe("Test suite for despositing and withdrawing money", () => {
 		let input = new Transaction();
 
 		// Act
-		actualOutput = bankAccount.transactions;
+		actualOutput = bankAccount.getTransactions();
 
 		// Assert
 		expect(actualOutput).toContain(input);

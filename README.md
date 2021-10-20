@@ -27,5 +27,20 @@ Created my own user stories and a provisional domain model.
 | `BankStatement` |                    | `printStatement(@BankStatement)` | `@Str`                                       |
 
 
+| Object          | Property           | Method                           | Output                                       |
+| --------------- | ------------------ | -------------------------------- | -------------------------------------------- |
+| `BankAccount`   | `balance@Number`   | `deposit(@Num)`                  | `'Deposited ${@Num} amount on ${@Date}'@Str` |
+|                 | `credit@Num`       | `withdraw(@Num)`                 | `'Withdrawn ${@Num} amount on ${@Date}'@Str` |
+|                 | `debit@Num`        | `createStatement()`              | `@BankStatement`                             |
+|                 | `transactions@Arr` |                                  |                                              |
+| `Transaction`   | `credit@Num`       |                                  |                                              |
+|                 | `debit@Num`        |                                  |                                              |
+|                 | `balance@Num`      |                                  |                                              |
+|                 | `date@Date`        | `getDate(@Date)`                 | `@Arr`                                       |
+| `Date`          | `day@Num`          |                                  |                                              |
+|                 | `month@Num`        |                                  |                                              |
+|                 | `year@Num`         |                                  |                                              |
+| `BankStatement` |                    | `printStatement(@BankStatement)` | `@Str`                                       |
+
 ### **Examples of interactions**
 ------------------------
