@@ -3,29 +3,23 @@ class Date {
 	#month;
 	#year;
 
-	// Setters and Getters
-	getDay() {
-		return this.#day;
+	constructor(day, month, year) {
+		this.#day = day;
+		this.#month = month;
+		this.#year = year;
 	}
 
-	setDay(day) {
-		this.#day = day;
+	// Getters
+	getDay() {
+		return this.#day;
 	}
 
 	getMonth() {
 		return this.#month;
 	}
 
-	setMonth(month) {
-		this.#month = month;
-	}
-
 	getYear() {
 		return this.#year;
-	}
-
-	setYear(year) {
-		this.#year = year;
 	}
 }
 
