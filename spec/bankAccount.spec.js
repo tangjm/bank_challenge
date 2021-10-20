@@ -20,7 +20,7 @@ describe("Test suite for despositing and withdrawing money", () => {
 
 		// Act
 		actualOutput = bankAccount.getCredit();
-		console.log(actualOutput);
+
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
