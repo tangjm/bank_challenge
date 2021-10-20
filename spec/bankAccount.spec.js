@@ -14,37 +14,37 @@ describe("Test suite for BankAccount class", () => {
 
 	it("Test 1: Testing that user can deposit money", () => {
 		// Arrange
-		bankAccount.credit = 0;
+		bankAccount.setCredit(0);
 		expectedOutput = 10;
 
 		// Act
 		bankAccount.deposit(10);
-		actualOutput = bankAccount.credit;
+		actualOutput = bankAccount.getCredit();
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
 	it("Test 2: Testing that user can withdraw money", () => {
 		// Arrange
-		bankAccount.debit = 10;
+		bankAccount.setDebit(10);
 		expectedOutput = 0;
 
 		// Act
 		bankAccount.withdraw(10);
-		actualOutput = bankAccount.debit;
+		actualOutput = bankAccount.getDebit();
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
 	it("Test 3: Testing that balance responds correctly to reflect credit and debit changes", () => {
 		// Arrange
-		bankAccount.balance = 0;
+		bankAccount.setBalance(0);
 		expectedOutput = 10;
 
 		// Act
 		bankAccount.deposit(20);
 		bankAccount.withdraw(10);
-		actualOutput = bankAccount.balance;
+		actualOutput = bankAccount.getBalance();
 
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
