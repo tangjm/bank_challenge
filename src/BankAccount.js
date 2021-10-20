@@ -3,16 +3,7 @@ class BankAccount {
 	#debit;
 	#balance;
 
-	deposit(amount) {
-		this.#credit += amount;
-		this.#balance += amount;
-	}
-
-	withdraw(amount) {
-		this.#debit -= amount;
-		this.#balance -= amount;
-	}
-
+	// Setters and Getters
 	getBalance() {
 		return this.#balance;
 	}
@@ -35,6 +26,17 @@ class BankAccount {
 
 	setCredit(amount) {
 		this.#credit = amount;
+	}
+
+	// Methods
+	deposit(amount) {
+		this.#credit += amount;
+		this.#balance += amount;
+	}
+
+	withdraw(amount) {
+		this.#debit -= amount;
+		this.#balance -= amount;
 	}
 }
 
