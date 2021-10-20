@@ -1,10 +1,12 @@
 class Transaction {
 	#credit;
 	#dateArray;
+	#newBalance;
 
 	constructor(dateArray, amount, newBalance) {
 		this.#credit = amount;
 		this.#dateArray = dateArray;
+		this.#newBalance = newBalance;
 	}
 
 	// Getters
@@ -15,6 +17,10 @@ class Transaction {
 
 	getDateArray() {
 		return this.#dateArray;
+	}
+
+	getNewBalance() {
+		return this.#newBalance;
 	}
 }
 
