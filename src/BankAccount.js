@@ -3,29 +3,23 @@ class BankAccount {
 	#debit;
 	#balance;
 
-	// Setters and Getters
-	getBalance() {
-		return this.#balance;
+	constructor() {
+		this.#credit = 0;
+		this.#debit = 0;
+		this.#balance = 0;
 	}
 
-	setBalance(amount) {
-		this.#balance = amount;
+	// Getters
+	getBalance() {
+		return this.#balance;
 	}
 
 	getDebit() {
 		return this.#debit;
 	}
 
-	setDebit(amount) {
-		this.#debit = amount;
-	}
-
 	getCredit() {
 		return this.#credit;
-	}
-
-	setCredit(amount) {
-		this.#credit = amount;
 	}
 
 	// Methods
