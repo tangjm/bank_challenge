@@ -17,15 +17,23 @@ describe("Test suite for Transaction class", () => {
 		transaction = null;
 	})
 
-	it("Test 1 : Testing that transactions can keep track of deposits/withdrawals", () => {
+	it("Test 1 : Testing that transactions can keep track of deposits", () => {
 		// Arrange
 		// let transaction = new Transaction(dateArray, depositAmount/withdrawAmount, newBalance);
 		expectedOutput = 10;
 
 		// Act
 		actualOutput = transaction.getCredit();
-		console.log(actualOutput);
 
+		// Assert
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+
+	it("Test 1b: Testing that transactions can keep track of withdrawals", () => {
+		// Arrange
+		expectedOutput = 10;
+		// Act
+		actualOutput = transaction.getDebit();
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
@@ -47,5 +55,4 @@ describe("Test suite for Transaction class", () => {
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
-
 })
