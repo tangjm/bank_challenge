@@ -1,6 +1,8 @@
 class Date {
-	#day
+	#day;
+	#month;
 
+	// Setters and Getters
 	getDay() {
 		return this.#day;
 	}
@@ -8,6 +10,15 @@ class Date {
 	setDay(day) {
 		this.#day = day;
 	}
+
+	getMonth() {
+		return this.#month;
+	}
+
+	setMonth(month) {
+		this.#month = month;
+	}
+
 }
 
 module.exports = Date;
