@@ -1,30 +1,52 @@
 const BankAccount = require(`../src/BankAccount`);
 
 describe("Test suite for BankAccount class", () => {
+	let expectedOutput, actualOutput;
+	let bankAccount;
+
+	beforeEach(() => {
+		bankAccount = new BankAccount();
+	})
+
+	afterEach(() => {
+		bankAccount = null;
+	})
+
 	it("Test 1: Testing that user can deposit money", () => {
 		// Arrange
-		let bankAccount = new BankAccount();
 		bankAccount.credit = 0;
-		let expectedOutput = 10;
+		expectedOutput = 10;
 
 		// Act
 		bankAccount.deposit(10);
-		let actualOutput = bankAccount.credit;
+		actualOutput = bankAccount.credit;
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 2: TEsting that user can withdraw money", () => {
+	it("Test 2: Testing that user can withdraw money", () => {
 		// Arrange
-		let bankAccount = new BankAccount();
 		bankAccount.debit = 10;
-		let expectedOutput = 0;
+		expectedOutput = 0;
 
 		// Act
 		bankAccount.withdraw(10);
-		let actualOutput = bankAccount.debit;
+		actualOutput = bankAccount.debit;
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
+	it("Test 3: Testing that balance responds correctly to reflect credit and debit changes", () => {
+		// Arrange
+		bankAccount.balance = 0;
+		expectedOutput = 10;
+
+		// Act
+		bankAccount.credit = 20;
+		bankAccount.debit = 10;
+		actualOutput = bankAccount.balance;
+
+		// Assert
+		expect(actualOutput).toEqual(expectedOutput);
+	})
 })
