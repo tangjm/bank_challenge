@@ -1,6 +1,6 @@
 const BankAccount = require(`../src/BankAccount`);
 
-describe("Test suite for BankAccount class", () => {
+describe("Test suite for despositing and withdrawing money", () => {
 	let expectedOutput, actualOutput;
 	let bankAccount;
 
@@ -47,4 +47,18 @@ describe("Test suite for BankAccount class", () => {
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
+
+	it("Test 4: Testing that every deposit is added to the transaction history", () => {
+		// Arrange
+		bankAccount.deposit(20);
+		let input = new Transaction();
+
+		// Act
+		actualOutput = bankAccount.transactions;
+
+		// Assert
+		expect(actualOutput).toContain(input);
+	})
+
 })
+
