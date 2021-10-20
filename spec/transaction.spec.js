@@ -55,4 +55,15 @@ describe("Test suite for Transaction class", () => {
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
+
+	it("Test 4: Testing that transactions cannot involve both a deposit and a withdrawal", () => {
+		// Arrange
+		expectedOutput = transaction.getCredit();
+
+		// Act
+		actualOutput = transaction.getDebit();
+
+		// Assert
+		expect(actualOutput).not.toEqual(expectedOutput);
+	})
 })
