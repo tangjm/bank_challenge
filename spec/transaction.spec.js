@@ -14,7 +14,7 @@ describe("Test suite for Transaction class", () => {
 		expectedOutput = 10;
 
 		// Act
-		actualOutput = transaction.credit;
+		actualOutput = transaction.getCredit();
 		console.log(actualOutput);
 
 		// Assert
