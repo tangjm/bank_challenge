@@ -42,6 +42,9 @@ class BankAccount {
 	withdraw(amount) {
 		this.#debit -= amount;
 		this.#balance -= amount;
+
+		let transaction = new Transaction();
+		this.#transactions.push(transaction);
 	}
 
 
