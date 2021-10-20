@@ -42,8 +42,8 @@ describe("Test suite for BankAccount class", () => {
 		expectedOutput = 10;
 
 		// Act
-		bankAccount.credit = 20;
-		bankAccount.debit = 10;
+		bankAccount.deposit(20);
+		bankAccount.withdraw(10);
 		actualOutput = bankAccount.balance;
 
 		// Assert
