@@ -1,10 +1,12 @@
 class Transaction {
 	#credit;
+	#debit;
 	#dateArray;
 	#newBalance;
 
 	constructor(dateArray, amount, newBalance) {
 		this.#credit = amount;
+		this.#debit = amount;
 		this.#dateArray = dateArray;
 		this.#newBalance = newBalance;
 	}
@@ -13,6 +15,10 @@ class Transaction {
 
 	getCredit() {
 		return this.#credit;
+	}
+
+	getDebit() {
+		return this.#debit;
 	}
 
 	getDateArray() {
