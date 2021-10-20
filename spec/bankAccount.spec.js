@@ -49,9 +49,21 @@ describe("Test suite for despositing and withdrawing money", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 4: Testing that every deposit is added to the transaction history", () => {
+	it("Test 4: Testing that every deposit is recorded in transaction history", () => {
 		// Arrange
 		bankAccount.deposit(20);
+		let input = new Transaction();
+
+		// Act
+		actualOutput = bankAccount.getTransactions();
+
+		// Assert
+		expect(actualOutput).toContain(input);
+	})
+
+	it("Test 5: Testing that every withdrawal is recorded in transaction history", () => {
+		// Arrange
+		bankAccount.withdraw(20);
 		let input = new Transaction();
 
 		// Act
