@@ -6,18 +6,13 @@ class Transaction {
 	#type;
 
 	constructor(dateObj, type, amount, newBalance) {
-		if (type === "deposit") {
-			this.#credit = amount;
-		} else {
-			this.#debit = amount;
-		}
+		type === "deposit" ? this.#credit = amount : this.#debit = amount;
 		this.#type = type;
 		this.#date = dateObj;
 		this.#newBalance = newBalance;
 	}
 
 	// Getters
-
 	getCredit() {
 		return this.#credit;
 	}

@@ -10,7 +10,6 @@ class BankStatement {
 	}
 
 	// Getters
-
 	getHeader() {
 		return this.#header;
 	}
@@ -18,36 +17,13 @@ class BankStatement {
 	getFormattedTransactions() {
 		return this.#formattedTransactions;
 	}
-	// Methods
 
+	// Methods
 	format(transactionsArr = new BankAccount().getTransactions()) {
 		for (let i = 0, j = transactionsArr.length; i < j; i++) {
 			let formattedArr = [];
-			if (transactionsArr[i].getType() === "deposit") {
-				// transactionsArr[i] = {
-				// 	dateObj, 
-				// 	type,
-				// 	amount,
-				// 	newBalance
-				// }
-				// let formattedArr = [];
-				// formattedArr[0] = date;
-				// formattedArr[1] = amount to 2.d.p + " ||";
-				// formattedArr[2] = newBalance to 2.d.p;
-
-				formattedArr[0] = this.dateFormat(transactionsArr[i].getDate()); // dateObj
-
-				formattedArr[1] = this.creditFormat(transactionsArr[i].getCredit()); // amount
-
-				formattedArr[2] = this.balanceFormat(transactionsArr[i].getNewBalance()); // newBalance
-
-			} else {
-				formattedArr[0] = this.dateFormat(transactionsArr[i].getDate()); // dateObj
-
-				formattedArr[1] = this.debitFormat(transactionsArr[i].getDebit()); // amount
-
-				formattedArr[2] = this.balanceFormat(transactionsArr[i].getNewBalance()); // newBalance
-			}
+			transactionsArr[i].getType() === "deposit" ? formattedArr = this.depositFormat(transactionsArr[i]) :
+				formattedArr = this.withdrawalFormat(transactionsArr[i]);
 			this.#formattedTransactions.push(formattedArr.join(" || "));
 		}
 	}
@@ -65,14 +41,24 @@ class BankStatement {
 		return formattedAmount;
 	}
 	dateFormat(dateObj) {
-		let formattedDate = [dateObj.getDay(), dateObj.getMonth(), dateObj.getYear()].join("/");
-		return formattedDate;
+		let formattedDate = [dateObj.getDay(), dateObj.getMonth(), dateObj.getYear()];
+		return formattedDate.join("/");
 	}
 
 	depositFormat(transactionObj) {
+		let formattedArr = [];
+		formattedArr[0] = this.dateFormat(transactionObj.getDate()); // dateObj
+		formattedArr[1] = this.creditFormat(transactionObj.getCredit()); // amount
+		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance()); // newBalance
+		return formattedArr;
 	}
 
-	withdrawalFormat() {
+	withdrawalFormat(transactionObj) {
+		let formattedArr = [];
+		formattedArr[0] = this.dateFormat(transactionObj.getDate()); // dateObj
+		formattedArr[1] = this.debitFormat(transactionObj.getDebit()); // amount
+		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance()); // newBalance
+		return formattedArr;
 	}
 }
 
