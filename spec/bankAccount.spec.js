@@ -78,7 +78,7 @@ describe("Test suite for despositing and withdrawing money", () => {
 describe("Test suite for transaction storage", () => {
 	let expectedOutput, actualOutput;
 
-	it("Test 6: Testing that deposit transactions added to transaction history have a date", () => {
+	it("Test 6a: Testing that deposit transactions added to transaction history have a date", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -92,7 +92,7 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 7: Testing that withdrawal transactions added to transaction history have a date", () => {
+	it("Test 6b: Testing that withdrawal transactions added to transaction history have a date", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -104,6 +104,20 @@ describe("Test suite for transaction storage", () => {
 
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
+	})
+
+	it("Test 7: Testing that transactions added to transaction history have a type", () => {
+		// Arrange
+		let bankAccount = new BankAccount();
+		let dateObj = new Date(10, 1, 2012);
+		bankAccount.deposit(10, dateObj);
+
+		// Act
+		// We spyOn the transactionObj's constructor
+		actualOutput = spyOn(bankAccount.getTransactions()[0], "constructor")
+
+		// Assert
+		expect(actualOutput).toHaveBeenCalledWith("deposit");
 	})
 
 })
