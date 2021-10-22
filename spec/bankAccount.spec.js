@@ -20,7 +20,7 @@ describe("Test suite for despositing and withdrawing money", () => {
 		expectedOutput = 10;
 
 		// Act
-		actualOutput = bankAccount.getCredit();
+		actualOutput = bankAccount.getBalance();
 
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
@@ -32,7 +32,7 @@ describe("Test suite for despositing and withdrawing money", () => {
 		expectedOutput = -10;
 
 		// Act
-		actualOutput = bankAccount.getDebit();
+		actualOutput = bankAccount.getBalance();
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
@@ -162,8 +162,6 @@ describe("Test suite for transaction storage", () => {
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
-
-
 })
 
 

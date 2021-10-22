@@ -1,15 +1,11 @@
 const Transaction = require("./Transaction");
 
 class BankAccount {
-	#credit;
-	#debit;
 	#balance;
 	#transactions;
 	#transactionData;
 
 	constructor() {
-		this.#credit = 0;
-		this.#debit = 0;
 		this.#balance = 0;
 		this.#transactions = [];
 		this.#transactionData = [];
@@ -20,21 +16,12 @@ class BankAccount {
 		return this.#balance;
 	}
 
-	getDebit() {
-		return this.#debit;
-	}
-
-	getCredit() {
-		return this.#credit;
-	}
-
 	getTransactions() {
 		return this.#transactions;
 	}
 
 	// Methods
 	deposit(amount, dateObj) {
-		this.#credit += amount;
 		this.#balance += amount;
 
 		this.#transactionData = [dateObj, "deposit", amount, this.#balance];
@@ -53,7 +40,6 @@ class BankAccount {
 	}
 
 	withdraw(amount, dateObj) {
-		this.#debit -= amount;
 		this.#balance -= amount;
 
 		this.#transactionData = [dateObj, "withdrawal", amount, this.#balance];
