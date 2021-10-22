@@ -99,7 +99,7 @@ describe("Test suite for transaction storage", () => {
 		expectedOutput = dateObj;
 
 		// Act
-		bankAccount.withdrawal(10, dateObj);
+		bankAccount.withdraw(10, dateObj);
 		actualOutput = bankAccount.getTransactions()[0].getDate();
 
 		// Assert

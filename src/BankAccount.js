@@ -39,11 +39,11 @@ class BankAccount {
 		this.#transactions.push(transaction);
 	}
 
-	withdraw(amount) {
+	withdraw(amount, dateObj) {
 		this.#debit -= amount;
 		this.#balance -= amount;
 
-		let transaction = new Transaction();
+		let transaction = new Transaction(dateObj);
 		this.#transactions.push(transaction);
 	}
 
