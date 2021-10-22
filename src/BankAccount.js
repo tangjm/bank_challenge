@@ -31,11 +31,11 @@ class BankAccount {
 	}
 
 	// Methods
-	deposit(amount) {
+	deposit(amount, dateObj) {
 		this.#credit += amount;
 		this.#balance += amount;
 		// Also pass the amount into the transaction constructor
-		let transaction = new Transaction();
+		let transaction = new Transaction(dateObj);
 		this.#transactions.push(transaction);
 	}
 

@@ -1,16 +1,16 @@
 class Transaction {
 	#credit;
 	#debit;
-	#dateArray;
+	#date;
 	#newBalance;
 
-	constructor(dateArray, type, amount, newBalance) {
+	constructor(dateObj, type, amount, newBalance) {
 		if (type === "deposit") {
 			this.#credit = amount;
 		} else {
 			this.#debit = amount;
 		}
-		this.#dateArray = dateArray;
+		this.#date = dateObj;
 		this.#newBalance = newBalance;
 	}
 
@@ -24,8 +24,8 @@ class Transaction {
 		return this.#debit;
 	}
 
-	getDateArray() {
-		return this.#dateArray;
+	getDate() {
+		return this.#date;
 	}
 
 	getNewBalance() {

@@ -1,5 +1,6 @@
 const BankAccount = require(`../src/BankAccount`);
 const Transaction = require(`../src/Transaction`);
+const Date = require(`../src/Date`);
 
 describe("Test suite for despositing and withdrawing money", () => {
 	let expectedOutput, actualOutput;
@@ -80,11 +81,12 @@ describe("Test suite for transaction storage", () => {
 	it("Test 6: Testing that transactions added to transaction history have a date", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
+		let dateObj = new Date(10, 1, 2012);
 		expectedOutput = dateObj;
 
 		// Act
-		bankAccount.deposit(amount, dateObj);
-		actualOutput = bankAccount.getTransactions()[0];
+		bankAccount.deposit(10, dateObj);
+		actualOutput = bankAccount.getTransactions()[0].getDate();
 
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);

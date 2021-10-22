@@ -43,7 +43,7 @@ describe("Test suite for Transaction class", () => {
 		// Arrange
 		expectedOutput = [];
 		// Act
-		actualOutput = transaction.getDateArray();
+		actualOutput = transaction.getDate();
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
