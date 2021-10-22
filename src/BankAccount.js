@@ -5,12 +5,14 @@ class BankAccount {
 	#debit;
 	#balance;
 	#transactions;
+	transactionData;
 
 	constructor() {
 		this.#credit = 0;
 		this.#debit = 0;
 		this.#balance = 0;
 		this.#transactions = [];
+		this.transactionData = [];
 	}
 
 	// Getters
@@ -34,9 +36,20 @@ class BankAccount {
 	deposit(amount, dateObj) {
 		this.#credit += amount;
 		this.#balance += amount;
-		// Also pass the amount into the transaction constructor
-		let transaction = new Transaction(dateObj);
-		this.#transactions.push(transaction);
+		// temp variable to store transaction data
+		this.transactionData = [dateObj, "deposit", amount, this.#balance];
+
+		let transactionObj = this.createTransaction();
+
+		this.addTransaction(transactionObj);
+	}
+
+	createTransaction(transactionObj = new Transaction(...this.transactionData)) {
+		return transactionObj;
+	}
+
+	addTransaction(transactionObj) {
+		this.#transactions.push(transactionObj);
 	}
 
 	withdraw(amount, dateObj) {

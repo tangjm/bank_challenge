@@ -3,6 +3,7 @@ class Transaction {
 	#debit;
 	#date;
 	#newBalance;
+	#type;
 
 	constructor(dateObj, type, amount, newBalance) {
 		if (type === "deposit") {
@@ -10,6 +11,7 @@ class Transaction {
 		} else {
 			this.#debit = amount;
 		}
+		this.#type = type;
 		this.#date = dateObj;
 		this.#newBalance = newBalance;
 	}
@@ -30,6 +32,10 @@ class Transaction {
 
 	getNewBalance() {
 		return this.#newBalance;
+	}
+
+	getType() {
+		return this.#type;
 	}
 }
 
