@@ -40,7 +40,7 @@ describe("Test suite for BankStatement class", () => {
 		let bankStatement = new BankStatement();
 		let dateObj = new Date(10, 10, 2021);
 		bankAccount.withdraw(10, dateObj);
-		expectedOutput = "10/10/2021 || || 10.00 || 10.00";
+		expectedOutput = "10/10/2021 || || 10.00 || -10.00";
 
 		// Act
 		bankStatement.format(bankAccount.getTransactions());

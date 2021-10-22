@@ -42,7 +42,11 @@ class BankStatement {
 				formattedArr[2] = this.balanceFormat(transactionsArr[i].getNewBalance()); // newBalance
 
 			} else {
+				formattedArr[0] = this.dateFormat(transactionsArr[i].getDate()); // dateObj
 
+				formattedArr[1] = this.debitFormat(transactionsArr[i].getDebit()); // amount
+
+				formattedArr[2] = this.balanceFormat(transactionsArr[i].getNewBalance()); // newBalance
 			}
 			this.#formattedTransactions.push(formattedArr.join(" || "));
 		}
@@ -57,6 +61,7 @@ class BankStatement {
 		return formattedAmount;
 	}
 	debitFormat(amount) {
+		let formattedAmount = "|| " + amount.toFixed(2);
 		return formattedAmount;
 	}
 	dateFormat(dateObj) {
