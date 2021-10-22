@@ -106,7 +106,7 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 7: Testing that deposit transactions added to transaction history have the correct type", () => {
+	it("Test 7a: Testing that deposit transactions added to transaction history have the correct type", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -115,6 +115,20 @@ describe("Test suite for transaction storage", () => {
 
 		// Act
 		// We spyOn the transactionObj's constructor
+		actualOutput = bankAccount.getTransactions()[0].getType();
+
+		// Assert
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+
+	it("Test 7b: Testing that withdrawal transactions added to transaction history have the correct type", () => {
+		// Arrange
+		let bankAccount = new BankAccount();
+		let dateObj = new Date(10, 1, 2012);
+		bankAccount.withdraw(10, dateObj);
+		expectedOutput = "withdrawal";
+
+		// Act
 		actualOutput = bankAccount.getTransactions()[0].getType();
 
 		// Assert
