@@ -78,7 +78,7 @@ describe("Test suite for despositing and withdrawing money", () => {
 describe("Test suite for transaction storage", () => {
 	let expectedOutput, actualOutput;
 
-	it("Test 6: Testing that transactions added to transaction history have a date", () => {
+	it("Test 6: Testing that deposit transactions added to transaction history have a date", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -91,6 +91,21 @@ describe("Test suite for transaction storage", () => {
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
+
+	it("Test 7: Testing that withdrawal transactions added to transaction history have a date", () => {
+		// Arrange
+		let bankAccount = new BankAccount();
+		let dateObj = new Date(10, 1, 2012);
+		expectedOutput = dateObj;
+
+		// Act
+		bankAccount.withdrawal(10, dateObj);
+		actualOutput = bankAccount.getTransactions()[0].getDate();
+
+		// Assert
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+
 })
 
 
