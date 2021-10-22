@@ -5,14 +5,14 @@ class BankAccount {
 	#debit;
 	#balance;
 	#transactions;
-	transactionData;
+	#transactionData;
 
 	constructor() {
 		this.#credit = 0;
 		this.#debit = 0;
 		this.#balance = 0;
 		this.#transactions = [];
-		this.transactionData = [];
+		this.#transactionData = [];
 	}
 
 	// Getters
@@ -37,14 +37,14 @@ class BankAccount {
 		this.#credit += amount;
 		this.#balance += amount;
 
-		this.transactionData = [dateObj, "deposit", amount, this.#balance];
+		this.#transactionData = [dateObj, "deposit", amount, this.#balance];
 
 		let transactionObj = this.createTransaction();
 
 		this.addTransaction(transactionObj);
 	}
 
-	createTransaction(transactionObj = new Transaction(...this.transactionData)) {
+	createTransaction(transactionObj = new Transaction(...this.#transactionData)) {
 		return transactionObj;
 	}
 
@@ -56,7 +56,7 @@ class BankAccount {
 		this.#debit -= amount;
 		this.#balance -= amount;
 
-		this.transactionData = [dateObj, "withdrawal", amount, this.#balance];
+		this.#transactionData = [dateObj, "withdrawal", amount, this.#balance];
 
 		let transactionObj = this.createTransaction();
 
