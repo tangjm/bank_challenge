@@ -9,11 +9,11 @@ const Transaction = require(`../src/Transaction`);
 describe("Test suite for Transaction class", () => {
 	let expectedOutput, actualOutput;
 	let transaction;
-	beforeAll(() => {
-		transaction = new Transaction([], 10, 10);
+	beforeEach(() => {
+		transaction = new Transaction([], "deposit", 10, 10);
 	})
 
-	afterAll(() => {
+	afterEach(() => {
 		transaction = null;
 	})
 
@@ -31,6 +31,7 @@ describe("Test suite for Transaction class", () => {
 
 	it("Test 1b: Testing that transactions can keep track of withdrawals", () => {
 		// Arrange
+		transaction = new Transaction([], "withdrawal", 10, 10);
 		expectedOutput = 10;
 		// Act
 		actualOutput = transaction.getDebit();

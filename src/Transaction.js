@@ -4,9 +4,12 @@ class Transaction {
 	#dateArray;
 	#newBalance;
 
-	constructor(dateArray, amount, newBalance) {
-		this.#credit = amount;
-		this.#debit = amount;
+	constructor(dateArray, type, amount, newBalance) {
+		if (type === "deposit") {
+			this.#credit = amount;
+		} else {
+			this.#debit = amount;
+		}
 		this.#dateArray = dateArray;
 		this.#newBalance = newBalance;
 	}
