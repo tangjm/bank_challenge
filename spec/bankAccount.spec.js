@@ -114,10 +114,11 @@ describe("Test suite for transaction storage", () => {
 
 		// Act
 		// We spyOn the transactionObj's constructor
-		actualOutput = spyOn(bankAccount.getTransactions()[0], "constructor")
+		console.log(bankAccount.getTransactions()[0].getType());
+		actualOutput = spyOn(bankAccount.getTransactions()[0], "constructor");
 
 		// Assert
-		expect(actualOutput).toHaveBeenCalledWith("deposit");
+		expect(actualOutput).toHaveBeenCalledWith(10);
 	})
 
 })
