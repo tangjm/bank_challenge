@@ -74,4 +74,21 @@ describe("Test suite for despositing and withdrawing money", () => {
 	})
 })
 
+describe("Test suite for transaction storage", () => {
+	let expectedOutput, actualOutput;
+
+	it("Test 6: Testing that transactions added to transaction history have a date", () => {
+		// Arrange
+		let bankAccount = new BankAccount();
+		expectedOutput = dateObj;
+
+		// Act
+		bankAccount.deposit(amount, dateObj);
+		actualOutput = bankAccount.getTransactions()[0];
+
+		// Assert
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+})
+
 
