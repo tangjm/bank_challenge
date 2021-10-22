@@ -76,12 +76,12 @@ describe("Test suite for the dateArray", () => {
 	// 	transaction = new Transaction([], "deposit", 10, 10);
 	// })
 
-	it("Test 5a: Testing that the dateArray must have exactly 3 elements(day, month, year)", () => {
-		// Arrange
-		expectedOutput = "Error, not a dateArray";
-		// Act
-		actualOutput = new Transaction([], "deposit", 10, 10);
-		// Assert
-		expect(actualOutput).toEqual(expectedOutput);
-	})
+	// it("Test 5a: Testing that the dateArray must have exactly 3 elements(day, month, year)", () => {
+	// 	// Arrange
+	// 	expectedOutput = "Error, not a dateArray";
+	// 	// Act
+	// 	actualOutput = new Transaction([], "deposit", 10, 10);
+	// 	// Assert
+	// 	expect(actualOutput).toEqual(expectedOutput);
+	// })
 })
