@@ -135,6 +135,21 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
+	it("Test 8a: Testing that deposit transactions added to transaction history have the correct deposit amount", () => {
+		// Arrange
+		let bankAccount = new BankAccount();
+		let dateObj = new Date(10, 1, 2012);
+		bankAccount.withdraw(10, dateObj);
+		expectedOutput = 10;
+
+		// Act
+		actualOutput = bankAccount.getTransactions()[0].getDebit();
+
+		// Assert
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+
+
 })
 
 
