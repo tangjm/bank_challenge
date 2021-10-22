@@ -12,7 +12,7 @@ describe("Test suite for BankStatement class", () => {
 
 		expectedOutput = "date || credit || debit || balance";
 		// Act
-		actualOutput = bankStatement.getHeading();
+		actualOutput = bankStatement.getHeader();
 
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
