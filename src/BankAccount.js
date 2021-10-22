@@ -56,8 +56,11 @@ class BankAccount {
 		this.#debit -= amount;
 		this.#balance -= amount;
 
-		let transaction = new Transaction(dateObj);
-		this.#transactions.push(transaction);
+		this.transactionData = [dateObj, "withdrawal", amount, this.#balance];
+
+		let transactionObj = this.createTransaction();
+
+		this.addTransaction(transactionObj);
 	}
 
 
