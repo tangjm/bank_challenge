@@ -33,5 +33,23 @@ describe("Test suite for BankStatement class", () => {
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
+
+	it("Test 2b: Testing that each recorded withdrawal transaction is properly formatted", () => {
+		// Arrange
+		let bankAccount = new BankAccount();
+		let bankStatement = new BankStatement();
+		let dateObj = new Date(10, 10, 2021);
+		bankAccount.withdraw(10, dateObj);
+		expectedOutput = "10/10/2021 || || 10.00 || 10.00";
+
+		// Act
+		bankStatement.format(bankAccount.getTransactions());
+		actualOutput = bankStatement.getFormattedTransactions()[0];
+
+		// Assert
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+
+
 })
 
