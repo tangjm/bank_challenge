@@ -36,7 +36,7 @@ class BankAccount {
 	deposit(amount, dateObj) {
 		this.#credit += amount;
 		this.#balance += amount;
-		// temp variable to store transaction data
+
 		this.transactionData = [dateObj, "deposit", amount, this.#balance];
 
 		let transactionObj = this.createTransaction();
