@@ -1,11 +1,5 @@
 const Transaction = require(`../src/Transaction`);
 
-// class TestBankAccount {
-// 	deposit(amount) {
-
-// 	};
-// }
-
 describe("Test suite for Transaction class", () => {
 	let expectedOutput, actualOutput;
 	let transaction;
@@ -17,54 +11,39 @@ describe("Test suite for Transaction class", () => {
 		transaction = null;
 	})
 
-	it("Test 1 : Testing that transactions can keep track of deposits", () => {
-		// Arrange
-		// let transaction = new Transaction(dateArray, depositAmount/withdrawAmount, newBalance);
+	it("Test 1a: Transactions keep track of deposits", () => {
 		expectedOutput = 10;
-
-		// Act
 		actualOutput = transaction.getCredit();
 
-		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 1b: Testing that transactions can keep track of withdrawals", () => {
-		// Arrange
+	it("Test 1b: Transactions keep track of withdrawals", () => {
 		transaction = new Transaction([], "withdrawal", 10, 10);
 		expectedOutput = 10;
-		// Act
 		actualOutput = transaction.getDebit();
-		// Assert
+
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 2: Testing that all transactions have a date array", () => {
-		// Arrange
+	it("Test 2: Transactions have a date array", () => {
 		expectedOutput = [];
-		// Act
 		actualOutput = transaction.getDate();
-		// Assert
+
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 3: Testing that all transactions have a balance property", () => {
-		// Arrange
+	it("Test 3: Transactions have a balance property", () => {
 		expectedOutput = 10;
-		// Act
 		actualOutput = transaction.getNewBalance();
-		// Assert
+
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 4: Testing that transactions cannot involve both a deposit and a withdrawal", () => {
-		// Arrange
+	it("Test 4: Transactions cannot involve both a deposit and a withdrawal", () => {
 		expectedOutput = transaction.getCredit();
-
-		// Act
 		actualOutput = transaction.getDebit();
 
-		// Assert
 		expect(actualOutput).not.toEqual(expectedOutput);
 	})
 })
