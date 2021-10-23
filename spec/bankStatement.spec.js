@@ -49,7 +49,5 @@ describe("Test suite for BankStatement class", () => {
 		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
-
-
 })
 
