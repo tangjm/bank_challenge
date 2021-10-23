@@ -9,10 +9,6 @@ class StatementPrinter {
 		console.log(header);
 	}
 
-	// printEachItem(bankStatement) {
-	// 	let formattedTransactionArr = bankStatement.getFormattedTransactions();
-	// 	formattedTransactionArr.forEach(transaction => console.log(transaction));
-	// }
 	printTransactions(bankStatement) {
 		let formattedTransactionArr = bankStatement.getFormattedTransactions()
 		formattedTransactionArr.reverse();
