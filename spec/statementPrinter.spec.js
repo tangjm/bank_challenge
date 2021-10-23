@@ -1,6 +1,5 @@
 const StatementPrinter = require("../src/StatementPrinter");
 
-
 class TestBankStatement {
 	#header;
 	#formattedTransactions;
@@ -31,21 +30,24 @@ describe("Test suite for StatementPrinter", () => {
 	})
 
 	it("Test 1: Testing that we can print out the headers for the bank statement", () => {
-		// Act
-		let spy = spyOn(console, "log");
+		spyOn(console, "log");
 		statementPrinter.printHeader(testBankStatement);
 
-		// Assert
-		expect(spy).toHaveBeenCalledWith("header");
+		expect(console.log).toHaveBeenCalledWith("header");
 	})
 
 	it("Test 2: Testing that we can print out the entire recorded transaction history", () => {
-		// Act
-		let spy = spyOn(console, "log");
+		spyOn(console, "log");
+		statementPrinter.printTransactions(testBankStatement);
 
-		statementPrinter.printEachItem(testBankStatement);
-		// Assert
-		expect(spy).toHaveBeenCalledTimes(2)
+		expect(console.log).toHaveBeenCalledTimes(2)
+	})
 
+	it("Test 3: Testing that the recorded transaction history is printed out in reverse chronological order", () => {
+		spyOn(console, "log");
+		statementPrinter.printTransactions(testBankStatement);
+
+		expect(console.log.calls.argsFor(0)).toEqual([2]);
+		expect(console.log.calls.argsFor(1)).toEqual([1]);
 	})
 })
