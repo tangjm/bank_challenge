@@ -20,11 +20,17 @@ class TestBankStatement {
 }
 
 describe("Test suite for StatementPrinter", () => {
-	it("Test 1: Testing that we can print out the headers for the bank statement", () => {
-		// Arrange
-		let statementPrinter = new StatementPrinter();
-		let testBankStatement = new TestBankStatement();
+	let statementPrinter, testBankStatement;
+	beforeEach(() => {
+		statementPrinter = new StatementPrinter();
+		testBankStatement = new TestBankStatement();
+	})
+	afterEach(() => {
+		statementPrinter = null;
+		testBankStatement = null;
+	})
 
+	it("Test 1: Testing that we can print out the headers for the bank statement", () => {
 		// Act
 		let spy = spyOn(console, "log");
 		statementPrinter.printHeader(testBankStatement);
@@ -34,10 +40,6 @@ describe("Test suite for StatementPrinter", () => {
 	})
 
 	it("Test 2: Testing that we can print out the entire recorded transaction history", () => {
-		// Arrange
-		let statementPrinter = new StatementPrinter();
-		let testBankStatement = new TestBankStatement();
-
 		// Act
 		let spy = spyOn(console, "log");
 

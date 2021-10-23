@@ -1,0 +1,9 @@
+@startuml Bank
+title Domain Model
+BankAccount -> BankAccount: deposit(amount@Num, date@Date)
+BankAccount <-- BankAccount: Deposited amount@Num on date@Date
+BankAccount -> BankAccount: withdraw(amount@Num, date@Date)
+BankAccount <-- BankAccount: Withdrawn amount@Num on date@Date
+
+
+@enduml
