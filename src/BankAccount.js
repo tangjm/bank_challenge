@@ -48,8 +48,6 @@ class BankAccount {
 
 		this.addTransaction(transactionObj);
 	}
-
-
 }
 
 module.exports = BankAccount;

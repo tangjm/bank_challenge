@@ -60,8 +60,6 @@ class BankStatement {
 	}
 
 	dateFormat(dateObj) {
-
-
 		let formattedDate = [dateObj.getDay(), this.monthFormat(dateObj), dateObj.getYear()];
 		return formattedDate.join("/");
 	}
