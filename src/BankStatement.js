@@ -28,37 +28,40 @@ class BankStatement {
 		}
 	}
 
-	balanceFormat(balance) {
-		let formattedBalance = balance.toFixed(2); // 2 d.p;
-		return formattedBalance;
-	}
-	creditFormat(amount) {
-		let formattedAmount = amount.toFixed(2) + " ||";
-		return formattedAmount;
-	}
-	debitFormat(amount) {
-		let formattedAmount = "|| " + amount.toFixed(2);
-		return formattedAmount;
-	}
-	dateFormat(dateObj) {
-		let formattedDate = [dateObj.getDay(), dateObj.getMonth(), dateObj.getYear()];
-		return formattedDate.join("/");
-	}
-
 	depositFormat(transactionObj) {
 		let formattedArr = [];
-		formattedArr[0] = this.dateFormat(transactionObj.getDate()); // dateObj
-		formattedArr[1] = this.creditFormat(transactionObj.getCredit()); // amount
-		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance()); // newBalance
+		formattedArr[0] = this.dateFormat(transactionObj.getDate());
+		formattedArr[1] = this.creditFormat(transactionObj.getCredit());
+		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance());
 		return formattedArr;
 	}
 
 	withdrawalFormat(transactionObj) {
 		let formattedArr = [];
-		formattedArr[0] = this.dateFormat(transactionObj.getDate()); // dateObj
-		formattedArr[1] = this.debitFormat(transactionObj.getDebit()); // amount
-		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance()); // newBalance
+		formattedArr[0] = this.dateFormat(transactionObj.getDate());
+		formattedArr[1] = this.debitFormat(transactionObj.getDebit());
+		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance());
 		return formattedArr;
+	}
+
+	balanceFormat(balance) {
+		let formattedBalance = balance.toFixed(2);
+		return formattedBalance;
+	}
+
+	creditFormat(amount) {
+		let formattedAmount = amount.toFixed(2) + " ||";
+		return formattedAmount;
+	}
+
+	debitFormat(amount) {
+		let formattedAmount = "|| " + amount.toFixed(2);
+		return formattedAmount;
+	}
+
+	dateFormat(dateObj) {
+		let formattedDate = [dateObj.getDay(), dateObj.getMonth(), dateObj.getYear()];
+		return formattedDate.join("/");
 	}
 }
 
