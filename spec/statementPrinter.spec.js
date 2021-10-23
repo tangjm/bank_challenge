@@ -67,7 +67,4 @@ describe("Test suite for StatementPrinter", () => {
 
 		expect(spy2).toHaveBeenCalledBefore(spy1);
 	})
-
-
-
 })

@@ -14,6 +14,7 @@ class StatementPrinter {
 		formattedTransactionArr.reverse();
 		formattedTransactionArr.forEach(formattedTransaction => this.printItem(formattedTransaction));
 	}
+
 	printItem(formattedTransaction) {
 		console.log(formattedTransaction);
 	}
