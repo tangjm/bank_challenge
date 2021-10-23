@@ -50,4 +50,14 @@ describe("Test suite for StatementPrinter", () => {
 		expect(console.log.calls.argsFor(0)).toEqual([2]);
 		expect(console.log.calls.argsFor(1)).toEqual([1]);
 	})
+
+	it("Test 4: Testing that the print() method prints both the header and transactions", () => {
+		spyOn(statementPrinter, "printTransactions")
+		spyOn(statementPrinter, "printHeader")
+		statementPrinter.print(testBankStatement);
+
+		expect(statementPrinter.printHeader).toHaveBeenCalled();
+		expect(statementPrinter.printTransactions).toHaveBeenCalled();
+	})
+
 })
