@@ -2,6 +2,7 @@ const BankAccount = require(`../src/BankAccount`);
 const Transaction = require(`../src/Transaction`);
 const Date = require(`../src/Date`);
 
+
 describe("Test suite for despositing and withdrawing money", () => {
 	let expectedOutput, actualOutput;
 	let bankAccount;
@@ -14,64 +15,41 @@ describe("Test suite for despositing and withdrawing money", () => {
 		bankAccount = null;
 	})
 
-	it("Test 1: Testing that user can deposit money", () => {
-		// Arrange
+	it("Test 1: User can deposit money", () => {
 		bankAccount.deposit(10);
 		expectedOutput = 10;
 
-		// Act
 		actualOutput = bankAccount.getBalance();
 
-		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 2: Testing that user can withdraw money", () => {
-		// Arrange
+	it("Test 2: User can withdraw money", () => {
 		bankAccount.withdraw(10);
 		expectedOutput = -10;
 
-		// Act
 		actualOutput = bankAccount.getBalance();
-		// Assert
+
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 3: Testing that balance responds correctly to reflect credit and debit changes", () => {
-		// Arrange
+	it("Test 3: Account balance correctly reflects credit and debit changes", () => {
 		bankAccount.deposit(20);
 		bankAccount.withdraw(10);
 		expectedOutput = 10;
 
-		// Act
 		actualOutput = bankAccount.getBalance();
 
-		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 4: Testing that every deposit is recorded in transaction history", () => {
-		// Arrange
-		bankAccount.deposit(20);
-		let input = new Transaction();
-
-		// Act
-		actualOutput = bankAccount.getTransactions();
-
-		// Assert
-		expect(actualOutput).toContain(input);
-	})
-
-	it("Test 5: Testing that every withdrawal is recorded in transaction history", () => {
-		// Arrange
+	it("Test 4: All transactions are recorded", () => {
 		bankAccount.withdraw(20);
-		let input = new Transaction();
+		expectedOutput = 1;
 
-		// Act
-		actualOutput = bankAccount.getTransactions();
+		actualOutput = bankAccount.getTransactions().length;
 
-		// Assert
-		expect(actualOutput).toContain(input);
+		expect(actualOutput).toEqual(expectedOutput);
 	})
 })
 
