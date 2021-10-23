@@ -14,7 +14,7 @@ describe("Test suite for StatementPrinter", () => {
 		bankStatement.format(bankAccount.getTransactions());
 
 		// Act
-		actualOutput = statementPrinter.print(bankStatement.getHeader())
+		actualOutput = statementPrinter.printHeader(bankStatement);
 		spyOn(bankStatement, "getHeader").and.returnValue("header");
 
 		// Assert
