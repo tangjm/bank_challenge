@@ -4,17 +4,19 @@ const StatementPrinter = require("../src/StatementPrinter");
 class TestBankStatement {
 	#header;
 	#formattedTransactions;
+
 	constructor() {
 		this.#header = "header";
 		this.#formattedTransactions = [1, 2];
 	}
+
 	getHeader() {
 		return this.#header;
 	}
+
 	getFormattedTransactions() {
 		return this.#formattedTransactions;
 	}
-
 }
 
 describe("Test suite for StatementPrinter", () => {
