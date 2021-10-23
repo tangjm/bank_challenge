@@ -60,4 +60,14 @@ describe("Test suite for StatementPrinter", () => {
 		expect(statementPrinter.printTransactions).toHaveBeenCalled();
 	})
 
+	it("Test 5: Testing that the print() method prints the header first", () => {
+		let spy1 = spyOn(statementPrinter, "printTransactions")
+		let spy2 = spyOn(statementPrinter, "printHeader")
+		statementPrinter.print(testBankStatement);
+
+		expect(spy2).toHaveBeenCalledBefore(spy1);
+	})
+
+
+
 })
