@@ -42,7 +42,10 @@ describe("Test suite for despositing and withdrawing money", () => {
 
 		expect(actualOutput).toEqual(expectedOutput);
 	})
+})
 
+describe("Test suite for transaction storage", () => {
+	let expectedOutput, actualOutput;
 	it("Test 4: All transactions are recorded", () => {
 		bankAccount.withdraw(20);
 		expectedOutput = 1;
@@ -51,12 +54,8 @@ describe("Test suite for despositing and withdrawing money", () => {
 
 		expect(actualOutput).toEqual(expectedOutput);
 	})
-})
 
-describe("Test suite for transaction storage", () => {
-	let expectedOutput, actualOutput;
-
-	it("Test 6a: Testing that deposit transactions added to transaction history have a date", () => {
+	it("Test 5a: Deposit transactions are recorded with a date", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -70,7 +69,7 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 6b: Testing that withdrawal transactions added to transaction history have a date", () => {
+	it("Test 5b: Withdrawal transactions are recorded with a date", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -84,7 +83,7 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 7a: Testing that deposit transactions added to transaction history have the correct type", () => {
+	it("Test 6a: Deposit transactions are recorded with the correct type", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -99,7 +98,7 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 7b: Testing that withdrawal transactions added to transaction history have the correct type", () => {
+	it("Test 6b: Withdrawal transactions are recorded with the correct type", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -113,7 +112,7 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 8a: Testing that deposit transactions added to transaction history have the correct deposit amount", () => {
+	it("Test 7a: Deposit transactions are recorded with correct deposit amount", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
@@ -127,7 +126,7 @@ describe("Test suite for transaction storage", () => {
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 8b: Testing that withdrawal transactions added to transaction history have the correct withdrawal amount", () => {
+	it("Test 7b: Withdrawal transactions are recorded with correct withdrawal amount", () => {
 		// Arrange
 		let bankAccount = new BankAccount();
 		let dateObj = new Date(10, 1, 2012);
