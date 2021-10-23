@@ -1,6 +1,7 @@
 class StatementPrinter {
 	print(bankStatement) {
 		this.printHeader(bankStatement);
+		this.printTransactions(bankStatement);
 	}
 
 	printHeader(bankStatement) {
