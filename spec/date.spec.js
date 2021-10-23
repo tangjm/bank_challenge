@@ -12,39 +12,21 @@ describe("Test suite for Date class", () => {
 		date = null;
 	})
 
-	it("Test 1: Testing that user can create a date and specify the day", () => {
-		// Arrange
+	it("Test 1: User can specify the day", () => {
 		expectedOutput = 20;
-
-		// Act
 		actualOutput = date.getDay();
-
-		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 2: Testing that user can create a date and specify the month", () => {
-		// Arrange
+	it("Test 2: User can specify the month", () => {
 		expectedOutput = 10;
-
-		// Act
 		actualOutput = date.getMonth();
-
-		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
 
-	it("Test 3: Testing that user can create a date and specify the year", () => {
-		// Arrange
+	it("Test 3: User can specify the year", () => {
 		expectedOutput = 2021;
-
-		// Act
 		actualOutput = date.getYear();
-
-		// Assert
 		expect(actualOutput).toEqual(expectedOutput);
 	})
-
-
-
 })
