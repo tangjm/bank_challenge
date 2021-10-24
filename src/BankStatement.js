@@ -67,7 +67,7 @@ class BankStatement {
 
 	dateFormat(dateObj) {
 		let formattedDate = [
-			dateObj.getDay(),
+			this.dayFormat(dateObj),
 			this.monthFormat(dateObj),
 			dateObj.getYear()
 		];
@@ -79,6 +79,13 @@ class BankStatement {
 			return "0" + dateObj.getMonth().toString();
 		}
 		return dateObj.getMonth();
+	}
+
+	dayFormat(dateObj) {
+		if (dateObj.getDay() >= 1 && dateObj.getDay() <= 9) {
+			return "0" + dateObj.getDay().toString();
+		}
+		return dateObj.getDay();
 	}
 }
 
