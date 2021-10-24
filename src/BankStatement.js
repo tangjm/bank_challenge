@@ -1,12 +1,12 @@
-const BankAccount = require("./BankAccount");
-
 class BankStatement {
 	#header;
 	#formattedTransactions;
+	#bankAccount;
 
-	constructor() {
+	constructor(bankAccount) {
 		this.#header = "date || credit || debit || balance";
 		this.#formattedTransactions = [];
+		this.#bankAccount = bankAccount;
 	}
 
 	// Getters
@@ -18,8 +18,12 @@ class BankStatement {
 		return this.#formattedTransactions;
 	}
 
+	getBankAccount() {
+		return this.#bankAccount;
+	}
+
 	// Methods
-	format(transactionsArr = new BankAccount().getTransactions()) {
+	format(transactionsArr = this.getBankAccount().getTransactions()) {
 		for (let i = 0, j = transactionsArr.length; i < j; i++) {
 			let formattedArr = [];
 			transactionsArr[i].getType() === "deposit" ? formattedArr = this.depositFormat(transactionsArr[i]) :
