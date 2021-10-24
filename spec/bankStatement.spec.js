@@ -1,6 +1,7 @@
 const BankStatement = require("../src/BankStatement");
 
 describe("Test suite for BankStatement class", () => {
+	let expectedOutput, actualOutput;
 	let bankStatement;
 	let dateObj, transactionObj;
 
@@ -60,3 +61,39 @@ describe("Test suite for BankStatement class", () => {
 	})
 })
 
+describe("Edge Case Test Suite for BankStatement", () => {
+	let expectedOutput, actualOutput;
+	let bankStatement;
+	let dateObj;
+
+	beforeEach(() => {
+		bankStatement = new BankStatement();
+	})
+	afterEach(() => {
+		bankStatement = null;
+	})
+
+	it("Test 3: Dates with single digit days are correctly formatted", () => {
+		dateObj = {
+			day: 1,
+			month: "",
+			year: "",
+			getDay() { return this.day },
+			getMonth() { return this.month },
+			getYear() { return this.year }
+		}
+		bankStatement.format([{
+			getType() { return "deposit" },
+			getDate() { return dateObj },
+			getCredit() { return 10 },
+			getDebit() { return 10 },
+			getNewBalance() { return 10 }
+		}]);
+		expectedOutput = "01// || 10.00 || || 10.00";
+
+		actualOutput = bankStatement.getFormattedTransactions()[0];
+
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+
+})
