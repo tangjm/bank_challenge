@@ -1,4 +1,5 @@
-# Instructions
+## Instructions
+------------------------
 ### Installation guide
 1. Fork this repo and clone your forked version to your local machine.
 2. Navigate to your cloned repo on your local machine and type `npm install` in the terminal to install the required dependencies.
@@ -28,12 +29,15 @@ To resolve this, I added a variable inside the `deposit()` method which would st
  which would take an instance of the Transaction class as an input, and that instance would be created with the variable storing the transaction data as the arguments of its constructor. Finally, our `deposit()` method would call an `addTransaction()` function which would add that newly created transaction instance to a transaction history array of our bank account. The same applies mutatis mutandis for the `withdraw()` method.
 
 A second roadblock was trying to get my bank statment class to interact with my bank account class correctly. Initially, I tried decoupling any dependency on the bank account class by passing in the transactions array of an instance of the bank account class as an argument of the `format` method of the bank statement class like this:
+
 ```
 let bankStatement = new BankStatement();
 
 bankStatement.format(transactionsArr = new BankAccount().getTransactions());
 ```
+
 Then I moved the dependency into the bank statement class constructor and used an interface instead. But as a compromise, I had to use more memory because I had to store the bank account object passed into the constructor in an instance field of my bank statement. Then I had access this instance field and access the transactions array stored in an instance field of this instance field whenever I called the `format` method.
+
 ```
 let bankStatement = new BankStatement(bankAccount);
 
@@ -49,16 +53,15 @@ Another issue I had was understanding how the Jasmine spyOn function worked. I r
 Moreover, I found the spyOn function useful for testing that the bank statement headers are printed before the transactions. As the spyOn function enabled me to spy on two different methods of the same object and use the `toHaveBeenCalledBefore()` matcher to test the order in which the methods were called.
 
 
-
-
-
-### **User Stories**
+### User Stories
 ------------------------
 1. **As** a customer, **in order to** keep my money safe, **I want to** be able to deposit and withdraw money.
 2. **As** a customer, **in order to** keep frequent tabs on my spending, **I want to** be able to view my bank statement.
 
-### **Domain Models**
+### Domain Models
 ------------------------
+**Initial Domain Model**
+
 | Object          | Property           | Method                           | Output                                       |
 | --------------- | ------------------ | -------------------------------- | -------------------------------------------- |
 | `BankAccount`   | `balance@Number`   | `deposit(@Num)`                  | `'Deposited ${@Num} amount on ${@Date}'@Str` |
@@ -72,39 +75,43 @@ Moreover, I found the spyOn function useful for testing that the bank statement 
 |                 | `year@Num`         |                                  |                                              |
 | `BankStatement` |                    | `printStatement(@BankStatement)` | `@Str`                                       |
 
+**Final Domain Model**
 
-| Object          | Property           | Method                           | Output                                       |
-| --------------- | ------------------ | -------------------------------- | -------------------------------------------- |
-| `BankAccount`   | `balance@Number`   | `deposit(@Num)`                  | `'Deposited ${@Num} amount on ${@Date}'@Str` |
-|                 | `credit@Num`       | `withdraw(@Num)`                 | `'Withdrawn ${@Num} amount on ${@Date}'@Str` |
-|                 | `debit@Num`        | `createStatement()`              | `@BankStatement`                             |
-|                 | `transactions@Arr` |                                  |                                              |
-| `Transaction`   | `credit@Num`       |                                  |                                              |
-|                 | `debit@Num`        |                                  |                                              |
-|                 | `balance@Num`      |                                  |                                              |
-|                 | `date@Date`        | `getDate(@Date)`                 | `@Arr`                                       |
-| `Date`          | `day@Num`          |                                  |                                              |
-|                 | `month@Num`        |                                  |                                              |
-|                 | `year@Num`         |                                  |                                              |
-| `BankStatement` |                    | `printStatement(@BankStatement)` | `@Str`                                       |
+| Object             | Property                    | Method                              | Output         |
+| ------------------ | --------------------------- | ----------------------------------- | -------------- |
+| `BankAccount`      | `balance@Number`            | `deposit(@Num, @Date)`              |                |
+|                    | `credit@Num`                | `withdraw(@Num, @Date)`             |                |
+|                    | `debit@Num`                 |                                     |                |
+|                    | `transactions@Arr`          | `getTransactions()`                 |                |
+|                    | `transactionData@Arr`       | `getBalance()`                      |                |
+|                    |                             | `createTransaction(@Transaction)`   | `@Transaction` |
+|                    |                             | `addTransaction(@Transaction)`      |                |
+| `Transaction`      | `credit@Num`                | `getCredit()`                       | `@Num`         |
+|                    | `debit@Num`                 | `getDebit()`                        | `@Num`         |
+|                    | `newBalance@Num`            | `getNewBalance()`                   | `@Num`         |
+|                    | `type@Str`                  | `getType()`                         | `@Str`         |
+|                    | `date@Date`                 | `getDate()`                         | `@Date`        |
+| `Date`             | `day@Num`                   | `getDay()`                          | `@Num`         |
+|                    | `month@Num`                 | `getMonth()`                        | `@Num`         |
+|                    | `year@Num`                  | `getYear()`                         | `@Num`         |
+| `BankStatement`    | `header@Str`                | `getHeader()`                       | `@Str`         |
+|                    | `formattedTransactions@Arr` | `getFormattedTransactions()`        | `@Arr`         |
+|                    | `bankAccount@BankAccount`   | `getBankAccount()`                  | `@BankAccount` |
+|                    |                             | `format()`                          |                |
+|                    |                             | `depositFormat()`                   | `@Arr`         |
+|                    |                             | `withdrawalFormat()`                | `@Arr`         |
+|                    |                             | `balanceFormat()`                   | `@Num`         |
+|                    |                             | `creditFormat()`                    | `@Num`         |
+|                    |                             | `debitFormat()`                     | `@Num`         |
+|                    |                             | `dateFormat()`                      | `@Str`         |
+|                    |                             | `dayFormat()`                       | `@Str`         |
+|                    |                             | `monthFormat()`                     | `@Str`         |
+|                    |                             | `yearFormat()`                      | `@Str`         |
+| `StatementPrinter` |                             | `print(@BankStatement)`             |                |
+|                    |                             | `printHeader(@BankStatement)`       |                |
+|                    |                             | `printTransactions(@BankStatement)` |                |
+|                    |                             | `printItem(@Str)`                   |                |
 
-Final Domain Model
-
-
-| Object          | Property           | Method                           | Output                                       |
-| --------------- | ------------------ | -------------------------------- | -------------------------------------------- |
-| `BankAccount`   | `balance@Number`   | `deposit(@Num)`                  | `'Deposited ${@Num} amount on ${@Date}'@Str` |
-|                 | `credit@Num`       | `withdraw(@Num)`                 | `'Withdrawn ${@Num} amount on ${@Date}'@Str` |
-|                 | `debit@Num`        | `createStatement()`              | `@BankStatement`                             |
-|                 | `transactions@Arr` |                                  |                                              |
-| `Transaction`   | `credit@Num`       |                                  |                                              |
-|                 | `debit@Num`        |                                  |                                              |
-|                 | `balance@Num`      |                                  |                                              |
-|                 | `date@Date`        | `getDate(@Date)`                 | `@Arr`                                       |
-| `Date`          | `day@Num`          |                                  |                                              |
-|                 | `month@Num`        |                                  |                                              |
-|                 | `year@Num`         |                                  |                                              |
-| `BankStatement` |                    | `printStatement(@BankStatement)` | `@Str`                                       |
-
-### **Examples of interactions**
+## Examples of interactions
 ------------------------
+![alt text](writingREADME.png)
