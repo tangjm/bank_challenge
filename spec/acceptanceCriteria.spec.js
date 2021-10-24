@@ -8,14 +8,14 @@ describe("Test suite for Acceptance Criteria", () => {
 
 	it("Testing Acceptance Criteria", () => {
 		let bankAccount = new BankAccount();
-		let bankStatement = new BankStatement();
+		let bankStatement = new BankStatement(bankAccount);
 		let statementPrinter = new StatementPrinter();
 
 		bankAccount.deposit(1000, new Date(10, 01, 2012));
 		bankAccount.deposit(2000, new Date(13, 01, 2012));
 		bankAccount.withdraw(500, new Date(14, 01, 2012));
 
-		bankStatement.format(bankAccount.getTransactions());
+		bankStatement.format();
 
 		expectedOutput1 = `date || credit || debit || balance`;
 		expectedOutput2 = `14/01/2012 || || 500.00 || 2500.00`;
@@ -23,8 +23,14 @@ describe("Test suite for Acceptance Criteria", () => {
 		expectedOutput4 = `10/01/2012 || 1000.00 || || 1000.00`;
 
 		spyOn(console, "log");
+
 		statementPrinter.print(bankStatement);
 
-		expect(console.log.calls.allArgs()).toEqual([[expectedOutput1], [expectedOutput2], [expectedOutput3], [expectedOutput4]]);
+		expect(console.log.calls.allArgs()).toEqual([
+			[expectedOutput1],
+			[expectedOutput2],
+			[expectedOutput3],
+			[expectedOutput4]
+		]);
 	})
 })
