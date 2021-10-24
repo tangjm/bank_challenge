@@ -69,23 +69,30 @@ class BankStatement {
 		let formattedDate = [
 			this.dayFormat(dateObj),
 			this.monthFormat(dateObj),
-			dateObj.getYear()
+			this.yearFormat(dateObj)
 		];
 		return formattedDate.join("/");
 	}
 
-	monthFormat(dateObj) {
-		if (dateObj.getMonth() >= 1 && dateObj.getMonth() <= 9) {
-			return "0" + dateObj.getMonth().toString();
+	dayFormat(dateObj) {
+		let day = dateObj.getDay();
+		if (day >= 1 && day <= 9) {
+			return "0" + day.toString();
 		}
-		return dateObj.getMonth();
+		return day.toString();
 	}
 
-	dayFormat(dateObj) {
-		if (dateObj.getDay() >= 1 && dateObj.getDay() <= 9) {
-			return "0" + dateObj.getDay().toString();
+	monthFormat(dateObj) {
+		let month = dateObj.getMonth();
+		if (month >= 1 && month <= 9) {
+			return "0" + month.toString();
 		}
-		return dateObj.getDay();
+		return month.toString();
+	}
+
+	yearFormat(dateObj) {
+		let year = dateObj.getYear();
+		return year.toString();
 	}
 }
 
