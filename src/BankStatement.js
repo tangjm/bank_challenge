@@ -33,18 +33,20 @@ class BankStatement {
 	}
 
 	depositFormat(transactionObj) {
-		let formattedArr = [];
-		formattedArr[0] = this.dateFormat(transactionObj.getDate());
-		formattedArr[1] = this.creditFormat(transactionObj.getCredit());
-		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance());
+		let formattedArr = [
+			this.dateFormat(transactionObj.getDate()),
+			this.creditFormat(transactionObj.getCredit()),
+			this.balanceFormat(transactionObj.getNewBalance())
+		];
 		return formattedArr;
 	}
 
 	withdrawalFormat(transactionObj) {
-		let formattedArr = [];
-		formattedArr[0] = this.dateFormat(transactionObj.getDate());
-		formattedArr[1] = this.debitFormat(transactionObj.getDebit());
-		formattedArr[2] = this.balanceFormat(transactionObj.getNewBalance());
+		let formattedArr = [
+			this.dateFormat(transactionObj.getDate()),
+			this.debitFormat(transactionObj.getDebit()),
+			this.balanceFormat(transactionObj.getNewBalance())
+		];
 		return formattedArr;
 	}
 
@@ -64,7 +66,11 @@ class BankStatement {
 	}
 
 	dateFormat(dateObj) {
-		let formattedDate = [dateObj.getDay(), this.monthFormat(dateObj), dateObj.getYear()];
+		let formattedDate = [
+			dateObj.getDay(),
+			this.monthFormat(dateObj),
+			dateObj.getYear()
+		];
 		return formattedDate.join("/");
 	}
 

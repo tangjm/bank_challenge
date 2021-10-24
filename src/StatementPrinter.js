@@ -10,9 +10,9 @@ class StatementPrinter {
 	}
 
 	printTransactions(bankStatement) {
-		let formattedTransactionArr = bankStatement.getFormattedTransactions()
-		formattedTransactionArr.reverse();
-		formattedTransactionArr.forEach(formattedTransaction => this.printItem(formattedTransaction));
+		let transactionArr = bankStatement.getFormattedTransactions();
+		transactionArr.reverse();
+		transactionArr.forEach(formattedTransaction => this.printItem(formattedTransaction));
 	}
 
 	printItem(formattedTransaction) {
