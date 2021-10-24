@@ -7,7 +7,8 @@
 - Use `npm test` in the terminal to run the test suites.
 - To skip tests, prefix `describe` and `it` functions of files within the `spec` folder with an `x`. E.g. change `describe` to `xdescribe` and `it` to `xit`.
 - Run `node index.js` to try out the actual program.
-
+### Linting code
+- Type `npx eslint src` in the terminal to lint code in src folder
 ## My approach
 ### Planning stage
 - I first read through the instructions to understand the requirements and criteria.
