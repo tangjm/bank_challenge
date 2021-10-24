@@ -1,5 +1,4 @@
 ## Instructions
-------------------------
 ### Installation guide
 1. Fork this repo and clone your forked version to your local machine.
 2. Navigate to your cloned repo on your local machine and type `npm install` in the terminal to install the required dependencies.
@@ -10,7 +9,6 @@
 - Run `node index.js` to try out the actual program.
 
 ## My approach
-------------------------
 ### Planning stage
 - I first read through the instructions to understand the requirements and criteria.
 - I focused on creating an accurate domain model and worked on understanding how the various classes should interact with each other. To help with this, I wrote my own user stories and came up with a provisional domain model.
@@ -54,12 +52,10 @@ Moreover, I found the spyOn function useful for testing that the bank statement 
 
 
 ### User Stories
-------------------------
 1. **As** a customer, **in order to** keep my money safe, **I want to** be able to deposit and withdraw money.
 2. **As** a customer, **in order to** keep frequent tabs on my spending, **I want to** be able to view my bank statement.
 
 ### Domain Models
-------------------------
 **Initial Domain Model**
 
 | Object          | Property           | Method                           | Output                                       |
@@ -113,5 +109,4 @@ Moreover, I found the spyOn function useful for testing that the bank statement 
 |                    |                             | `printItem(@Str)`                   |                |
 
 ## Examples of interactions
-------------------------
 ![alt text](writingREADME.png)
