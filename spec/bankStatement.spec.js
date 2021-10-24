@@ -73,7 +73,7 @@ describe("Edge Case Test Suite for BankStatement", () => {
 		bankStatement = null;
 	})
 
-	it("Test 3: Dates with single digit days are correctly formatted", () => {
+	it("Test 3: Dates with single digit days are formatted correctly", () => {
 		dateObj = {
 			day: 1,
 			month: "",
@@ -90,6 +90,29 @@ describe("Edge Case Test Suite for BankStatement", () => {
 			getNewBalance() { return 10 }
 		}]);
 		expectedOutput = "01// || 10.00 || || 10.00";
+
+		actualOutput = bankStatement.getFormattedTransactions()[0];
+
+		expect(actualOutput).toEqual(expectedOutput);
+	})
+
+	it("Test 4: Dates with single digit months are formatted correctly", () => {
+		dateObj = {
+			day: "",
+			month: 1,
+			year: "",
+			getDay() { return this.day },
+			getMonth() { return this.month },
+			getYear() { return this.year }
+		}
+		bankStatement.format([{
+			getType() { return "deposit" },
+			getDate() { return dateObj },
+			getCredit() { return 10 },
+			getDebit() { return 10 },
+			getNewBalance() { return 10 }
+		}]);
+		expectedOutput = "/01/ || 10.00 || || 10.00";
 
 		actualOutput = bankStatement.getFormattedTransactions()[0];
 
