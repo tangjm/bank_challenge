@@ -5,5 +5,9 @@ BankAccount <-- BankAccount: Deposited amount@Num on date@Date
 BankAccount -> BankAccount: withdraw(amount@Num, date@Date)
 BankAccount <-- BankAccount: Withdrawn amount@Num on date@Date
 
+BankAccount -> Transaction: createTransaction([])
+Transaction --> BankAccount: transaction@Transaction
+
+
 
 @enduml
